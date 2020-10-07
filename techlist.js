@@ -4,5 +4,5 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // fetchInfo(newParams);
 
-    'Suck it, Trebek'
+    console.log('Suck it, Trebek')
   });
