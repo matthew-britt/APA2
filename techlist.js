@@ -11,6 +11,15 @@ function onlyUnique(value, index, self) {
   return self.indexOf(value) === index;
 }
 
+function renderEachTag(tag) {
+    const tagLi = document.createElement('li');
+    tagLi.setAttribute('class', 'list-group-item');
+    //tagLi.setAttribute('data-id')
+    tagLi.innerText = tag;
+    //tagLi.addEventListener('click', showSingleBeerDetails);
+    document.getElementById("tagId").append(tagLi);
+}
+
 function fetchTechList() {
   let tagsArray = [];
   fetch("https://api.airtable.com/v0/appT5nNiLF8Dr1wwj/Technology%20List/", {
@@ -26,9 +35,13 @@ function fetchTechList() {
 
       let allTagsArray = tagsArray.toString().split(",");
 
-      let uniqueTagsArray = allTagsArray.filter(onlyUnique)
+      let uniqueTagsArray = allTagsArray.filter(onlyUnique);
 
-      console.log(uniqueTagsArray);
+      for (let i of uniqueTagsArray) {
+          renderEachTag(i)
+      }
+
+      //console.log(uniqueTagsArray);
 
       //   for (let m = 0; m < tagsArray.length; m++) {
       //       for (let n = 0; n < tagsArray[m].length; n++) {
