@@ -12,13 +12,15 @@ function onlyUnique(value, index, self) {
 }
 
 function renderEachTag(tag) {
-    const tagLi = document.createElement('li');
-    tagLi.setAttribute('class', 'list-group-item');
-    //tagLi.setAttribute('data-id')
-    tagLi.innerText = tag;
-    //tagLi.addEventListener('click', showSingleBeerDetails);
-    document.getElementById("tagId").append(tagLi);
+  const tagLi = document.createElement("li");
+  tagLi.setAttribute("class", "list-group-item");
+  //tagLi.setAttribute('data-id')
+  tagLi.innerText = tag;
+  //tagLi.addEventListener('click', showSingleBeerDetails);
+  document.getElementById("tagId").append(tagLi);
 }
+
+//let uniqueTagsArray = [];
 
 function fetchTechList() {
   let tagsArray = [];
@@ -38,16 +40,19 @@ function fetchTechList() {
       let uniqueTagsArray = allTagsArray.filter(onlyUnique);
 
       for (let i of uniqueTagsArray) {
-          renderEachTag(i)
+        renderEachTag(i);
       }
 
-      //console.log(uniqueTagsArray);
-
-      //   for (let m = 0; m < tagsArray.length; m++) {
-      //       for (let n = 0; n < tagsArray[m].length; n++) {
-      //          // updatedTags.push(tagsArray[m][n]);
-      //       }
-      //   }
+      function addTechNamesToTags(tag) {
+          for (let i in json.records) {
+              
+              if (json.records[i]["fields"]["Tags"].includes(tag)) {
+                console.log(json.records[i]["fields"]["Name"])
+                }
+            }
+        }
+      addTechNamesToTags("Foster")
     });
 }
+//console.log(uniqueTagsArray);
 //https://api.airtable.com/v0/appT5nNiLF8Dr1wwj/Technology%20List?maxRecords=3&view=Grid%20view
