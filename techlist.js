@@ -37,7 +37,7 @@ function fetchTechList() {
 
       let allTagsArray = tagsArray.toString().split(",");
 
-      let uniqueTagsArray = allTagsArray.filter(onlyUnique);
+      let uniqueTagsArray = allTagsArray.filter(onlyUnique).sort();
 
       for (let j of uniqueTagsArray) {
         renderEachTag(j);
