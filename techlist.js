@@ -49,10 +49,11 @@ function fetchTechList() {
         for (let i in json.records) {
           if (json.records[i]["fields"]["Tags"].includes(tag)) {
             let toolName = json.records[i]["fields"]["Name"];
-            const toolLi = document.createElement("li");
+            const toolLi = document.createElement("a");
             toolLi.setAttribute("class", "list-group-item");
             toolLi.setAttribute("id", toolName);
             toolLi.innerText = toolName;
+            toolLi.href = toolName;
             //tagLi.addEventListener('click', showSingleBeerDetails);
             document.getElementById(tag).append(toolLi);
             //console.log(toolName);
