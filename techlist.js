@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("Suck it, Trebek");
 });
 
+function el(id) {
+    return document.getElementById(id);
+}
+
 function onlyUnique(value, index, self) {
   return self.indexOf(value) === index;
 }
@@ -16,11 +20,8 @@ function renderEachTag(tag) {
   tagUl.setAttribute("class", "list-group");
   tagUl.setAttribute("id", tag);
   tagUl.innerText = tag;
-  //tagLi.addEventListener('click', showSingleBeerDetails);
   document.getElementById("tagId").append(tagUl);
 }
-
-//let uniqueTagsArray = [];
 
 function fetchTechList() {
   let tagsArray = [];
@@ -42,7 +43,6 @@ function fetchTechList() {
       for (let j of uniqueTagsArray) {
         renderEachTag(j);
         addTechNamesToTags(j);
-        console.log(j);
       }
 
       function addTechNamesToTags(tag) {
@@ -54,11 +54,40 @@ function fetchTechList() {
             toolLi.setAttribute("id", toolName);
             toolLi.innerText = toolName;
             toolLi.href = toolName;
-            //tagLi.addEventListener('click', showSingleBeerDetails);
+            toolLi.addEventListener('click', showTechDetail);
             document.getElementById(tag).append(toolLi);
-            //console.log(toolName);
           }
         }
       }
+    });
+}
+
+function showTechDetail(e) {
+    e.preventDefault();
+    let tool = e.target.id;
+    fetch("https://api.airtable.com/v0/appT5nNiLF8Dr1wwj/Technology%20List/", {
+    headers: {
+      Authorization: "Bearer keyemv7utChwq4g5e",
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      for (let i in json.records) {
+          if (json.records[i]["fields"]["Name"] === tool) {
+              let website = json.records[i]["fields"]["Website"];
+              let tags = json.records[i]["fields"]["Tags"].toString();
+              let description = json.records[i]["fields"]["Description"];
+              let awio = json.records[i]["fields"]["Animal Welfare Industry Only"];
+              let contact = json.records[i]["fields"]["Contact"];
+              let contactEmail = json.records[i]["fields"]["Contact Email"];
+              let pricingModel = json.records[i]["fields"]["Pricing Model"];
+              let pricingDetails = json.records[i]["fields"]["Pricing Details"];
+              let attachments = json.records[i]["fields"]["Attachments"];
+              let caseStudies = json.records[i]["fields"]["Case Studies"];
+              console.log(caseStudies)
+            }
+      }
+
+
     });
 }
