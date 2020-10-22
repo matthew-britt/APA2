@@ -29,7 +29,7 @@ function renderTechDetail(tool) {
           let pricingDetails = json.records[i]["fields"]["Pricing Details"];
           let attachments = json.records[i]["fields"]["Attachments"];
           let caseStudies = json.records[i]["fields"]["Case Studies"];
-          console.log(tags[0]);
+          console.log(awio);
 
           let toolLi = document.createElement("li");
           toolLi.innerText = tool;
@@ -54,6 +54,16 @@ function renderTechDetail(tool) {
           let descriptionP = document.createElement("p");
           descriptionP.innerText = description;
           el('description').appendChild(descriptionP);
+
+          let awioSpan = document.createElement('span');
+          if (awio === undefined) {
+            awioSpan.innerText = 'false';
+          } else {
+            awioSpan.innerText = awio;
+          }
+          el('awio').appendChild(awioSpan);
+
+          
         }
       }
     });
