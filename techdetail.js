@@ -29,7 +29,7 @@ function renderTechDetail(tool) {
           let pricingDetails = json.records[i]["fields"]["Pricing Details"];
           let attachments = json.records[i]["fields"]["Attachments"];
           let caseStudies = json.records[i]["fields"]["Case Studies"];
-          console.log(attachments);
+          console.log(caseStudies);
 
           let toolLi = document.createElement("li");
           toolLi.innerText = tool;
@@ -102,12 +102,24 @@ function renderTechDetail(tool) {
               attachmentsA.title = "Click here";
               attachmentsA.href = i.url;
               attachmentsA.target = "_blank";
-              console.log(i.url);
             }
           }
           el("attachments").appendChild(attachmentsA);
+
+          let caseStudiesA = document.createElement("a");
+          if (caseStudies === undefined) {
+            caseStudiesA.innerText = "None";
+          } else {
+            for (let i of caseStudies) {
+              console.log(i);
+              caseStudiesA.innerText = i;
+              caseStudiesA.title = "Click here";
+              caseStudiesA.href = `./techcasestudy.html?${i}`;
+              caseStudiesA.target = "_blank";
+            }
+          }
+          el("caseStudies").appendChild(caseStudiesA);
         }
-        
       }
     });
 }
