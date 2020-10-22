@@ -53,20 +53,29 @@ function renderTechDetail(tool) {
 
           let descriptionP = document.createElement("p");
           descriptionP.innerText = description;
-          el('description').appendChild(descriptionP);
+          el("description").appendChild(descriptionP);
 
-          let awioSpan = document.createElement('span');
+          let awioSpan = document.createElement("span");
           if (awio === undefined) {
-            awioSpan.innerText = 'false';
+            awioSpan.innerText = "false";
           } else {
             awioSpan.innerText = awio;
           }
-          el('awio').appendChild(awioSpan);
+          el("awio").appendChild(awioSpan);
 
-          let contactSpan = document.createElement('span');
+          let contactSpan = document.createElement("span");
           contactSpan.innerText = contact;
-          el('contact').appendChild(contactSpan);
+          el("contact").appendChild(contactSpan);
 
+          let contactEmailA = document.createElement("a");
+          if (contactEmail === undefined) {
+            contactEmailA.innerText = "None";
+          } else {
+            contactEmailA.innerText = contactEmail;
+            contactEmailA.title = "Click here";
+            contactEmailA.href = `mailto:${contactEmail}`;
+          }
+          el("email").appendChild(contactEmailA);
         }
       }
     });
