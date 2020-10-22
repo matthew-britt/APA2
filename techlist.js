@@ -55,9 +55,9 @@ function fetchTechList() {
             toolNameLi.setAttribute("class", "list-group-item");
             toolNameLi.setAttribute("id", toolName);
             toolNameLi.innerText = toolName;
-            toolNameLi.href = "https://matthew-britt.github.io/APA2/techdetail.html";
+            toolNameLi.href = `./techdetail.html/${toolName}`;
             toolNameLi.target = "_blank";
-            toolNameLi.addEventListener("click", showTechDetail);
+            //toolNameLi.addEventListener("click", showTechDetail);
             document.getElementById(tag).append(toolNameLi);
           }
         }
