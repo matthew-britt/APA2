@@ -50,6 +50,10 @@ function renderTechDetail(tool) {
             tagA.target = "_blank";
             el("tags").appendChild(tagA);
           });
+
+          let descriptionP = document.createElement("p");
+          descriptionP.innerText = description;
+          el('description').appendChild(descriptionP);
         }
       }
     });
