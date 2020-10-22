@@ -29,7 +29,7 @@ function renderTechDetail(tool) {
           let pricingDetails = json.records[i]["fields"]["Pricing Details"];
           let attachments = json.records[i]["fields"]["Attachments"];
           let caseStudies = json.records[i]["fields"]["Case Studies"];
-          //console.log(awio);
+          console.log(attachments);
 
           let toolLi = document.createElement("li");
           toolLi.innerText = tool;
@@ -83,7 +83,7 @@ function renderTechDetail(tool) {
           } else {
             pricingModelSpan.innerText = pricingModel;
           }
-          el('model').appendChild(pricingModelSpan);
+          el("model").appendChild(pricingModelSpan);
 
           let pricingDetailsSpan = document.createElement("span");
           if (pricingDetails === undefined) {
@@ -91,7 +91,21 @@ function renderTechDetail(tool) {
           } else {
             pricingDetailsSpan.innerText = pricingDetails;
           }
-          el('details').appendChild(pricingDetailsSpan);
+          el("details").appendChild(pricingDetailsSpan);
+
+          let attachmentsA = document.createElement("a");
+          if (attachments === undefined) {
+            attachmentsA.innerText = "None";
+          } else {
+            for (let i of attachments) {
+              attachmentsA.innerText = i.url;
+              attachmentsA.title = "Click here";
+              attachmentsA.href = i.url;
+              attachmentsA.target = "_blank";
+              console.log(i.url);
+            }
+          }
+          el("attachments").appendChild(attachmentsA);
         }
       }
     });
