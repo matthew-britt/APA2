@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       )
         .then((res) => res.json())
-        .then((json) => { console.log(json['fields']['Email'])
+        .then((json) => { 
           let name = json["fields"]["Name"];
           let memberEmail = json["fields"]["Email"];
   
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
         let members = groupData.members;
         membersArray(members);
-        console.log(members);
+    
   
         let node1 = document.createElement("LI");
         let textnode1 = document.createTextNode(

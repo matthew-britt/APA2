@@ -29,7 +29,7 @@ function renderTechDetail(tool) {
           let pricingDetails = json.records[i]["fields"]["Pricing Details"];
           let attachments = json.records[i]["fields"]["Attachments"];
           let caseStudies = json.records[i]["fields"]["Case Studies"];
-          console.log(awio);
+          //console.log(awio);
 
           let toolLi = document.createElement("li");
           toolLi.innerText = tool;
@@ -76,6 +76,8 @@ function renderTechDetail(tool) {
             contactEmailA.href = `mailto:${contactEmail}`;
           }
           el("email").appendChild(contactEmailA);
+
+          
         }
       }
     });
