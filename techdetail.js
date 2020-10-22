@@ -107,6 +107,7 @@ function renderTechDetail(tool) {
           }
           el("attachments").appendChild(attachmentsA);
         }
+        
       }
     });
 }
