@@ -51,9 +51,9 @@ function renderTechDetail(tool) {
             el("tags").appendChild(tagA);
           });
 
-          let descriptionP = document.createElement("p");
-          descriptionP.innerText = description;
-          el("description").appendChild(descriptionP);
+          let descriptionSpan = document.createElement("span");
+          descriptionSpan.innerText = description;
+          el("description").appendChild(descriptionSpan);
 
           let awioSpan = document.createElement("span");
           if (awio === undefined) {
@@ -77,7 +77,21 @@ function renderTechDetail(tool) {
           }
           el("email").appendChild(contactEmailA);
 
-          
+          let pricingModelSpan = document.createElement("span");
+          if (pricingModel === undefined) {
+            pricingModelSpan.innerText = "None";
+          } else {
+            pricingModelSpan.innerText = pricingModel;
+          }
+          el('model').appendChild(pricingModelSpan);
+
+          let pricingDetailsSpan = document.createElement("span");
+          if (pricingDetails === undefined) {
+            pricingDetailsSpan.innerText = "None";
+          } else {
+            pricingDetailsSpan.innerText = pricingDetails;
+          }
+          el('details').appendChild(pricingDetailsSpan);
         }
       }
     });
