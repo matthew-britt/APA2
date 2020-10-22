@@ -63,7 +63,10 @@ function renderTechDetail(tool) {
           }
           el('awio').appendChild(awioSpan);
 
-          
+          let contactSpan = document.createElement('span');
+          contactSpan.innerText = contact;
+          el('contact').appendChild(contactSpan);
+
         }
       }
     });
