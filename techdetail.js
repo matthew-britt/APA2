@@ -109,30 +109,38 @@ function renderTechDetail(tool) {
           let caseStudiesA = document.createElement("a");
           if (caseStudies === undefined) {
             caseStudiesA.innerText = "None";
+            el("caseStudies").appendChild(caseStudiesA);
           } else {
             for (let i of caseStudies) {
-              //console.log(i);
               renderCaseStudies(i);
-              caseStudiesA.innerText = i;
-              caseStudiesA.title = "Click here";
-              caseStudiesA.href = `./techcasestudy.html?${i}`;
-              caseStudiesA.target = "_blank";
             }
           }
-          el("caseStudies").appendChild(caseStudiesA);
         }
       }
     });
 }
 
 function renderCaseStudies(study) {
-  fetch(`https://api.airtable.com/v0/appT5nNiLF8Dr1wwj/Case%20Studies/${study}`, {
-    headers: {
-      Authorization: "Bearer keyemv7utChwq4g5e",
-    },
-  })
+  fetch(
+    `https://api.airtable.com/v0/appT5nNiLF8Dr1wwj/Case%20Studies/${study}`,
+    {
+      headers: {
+        Authorization: "Bearer keyemv7utChwq4g5e",
+      },
+    }
+  )
     .then((res) => res.json())
     .then((json) => {
-      console.log(json)
-    })
-  }
+      let studyTitle = json["fields"]["Title"];
+      let caseStudiesLi = document.createElement("li");
+      caseStudiesLi.setAttribute('id', studyTitle);
+      el("caseStudies").appendChild(caseStudiesLi);
+
+      let caseStudiesA = document.createElement("a");
+      caseStudiesA.innerText = studyTitle;
+      caseStudiesA.title = "Click here";
+      caseStudiesA.href = `./techcasestudy.html?${study}`;
+      caseStudiesA.target = "_blank";
+      el(studyTitle).appendChild(caseStudiesA);
+    });
+}
