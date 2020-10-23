@@ -29,7 +29,7 @@ function renderTechDetail(tool) {
           let pricingDetails = json.records[i]["fields"]["Pricing Details"];
           let attachments = json.records[i]["fields"]["Attachments"];
           let caseStudies = json.records[i]["fields"]["Case Studies"];
-          console.log(caseStudies);
+          //console.log(caseStudies);
 
           let toolLi = document.createElement("li");
           toolLi.innerText = tool;
@@ -111,7 +111,8 @@ function renderTechDetail(tool) {
             caseStudiesA.innerText = "None";
           } else {
             for (let i of caseStudies) {
-              console.log(i);
+              //console.log(i);
+              renderCaseStudies(i);
               caseStudiesA.innerText = i;
               caseStudiesA.title = "Click here";
               caseStudiesA.href = `./techcasestudy.html?${i}`;
@@ -123,3 +124,15 @@ function renderTechDetail(tool) {
       }
     });
 }
+
+function renderCaseStudies(study) {
+  fetch(`https://api.airtable.com/v0/appT5nNiLF8Dr1wwj/Case%20Studies/${study}`, {
+    headers: {
+      Authorization: "Bearer keyemv7utChwq4g5e",
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json)
+    })
+  }
