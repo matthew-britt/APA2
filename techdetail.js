@@ -36,6 +36,7 @@ function renderTechDetail(tool) {
           el("tool").appendChild(toolLi);
 
           let websiteLi = document.createElement("a");
+          websiteLi.setAttribute("class", "notbold");
           websiteLi.innerText = website;
           websiteLi.title = "Click here";
           websiteLi.href = website;
@@ -44,6 +45,7 @@ function renderTechDetail(tool) {
 
           tags.forEach((tag) => {
             let tagA = document.createElement("a");
+            tagA.setAttribute("class", "notbold");
             tagA.innerText = `${tag}\u00A0\u00A0\u00A0`;
             tagA.title = "Click here";
             tagA.href = `./techlist.html?${tag}`;
@@ -52,10 +54,12 @@ function renderTechDetail(tool) {
           });
 
           let descriptionSpan = document.createElement("span");
+          descriptionSpan.setAttribute("class", "notbold");
           descriptionSpan.innerText = description;
           el("description").appendChild(descriptionSpan);
 
           let awioSpan = document.createElement("span");
+          awioSpan.setAttribute("class", "notbold");
           if (awio === undefined) {
             awioSpan.innerText = "false";
           } else {
@@ -64,10 +68,12 @@ function renderTechDetail(tool) {
           el("awio").appendChild(awioSpan);
 
           let contactSpan = document.createElement("span");
+          contactSpan.setAttribute("class", "notbold");
           contactSpan.innerText = contact;
           el("contact").appendChild(contactSpan);
 
           let contactEmailA = document.createElement("a");
+          contactEmailA.setAttribute("class", "notbold");
           if (contactEmail === undefined) {
             contactEmailA.innerText = "None";
           } else {
@@ -78,6 +84,7 @@ function renderTechDetail(tool) {
           el("email").appendChild(contactEmailA);
 
           let pricingModelSpan = document.createElement("span");
+          pricingModelSpan.setAttribute("class", "notbold");
           if (pricingModel === undefined) {
             pricingModelSpan.innerText = "None";
           } else {
@@ -86,6 +93,7 @@ function renderTechDetail(tool) {
           el("model").appendChild(pricingModelSpan);
 
           let pricingDetailsSpan = document.createElement("span");
+          pricingDetailsSpan.setAttribute("class", "notbold");
           if (pricingDetails === undefined) {
             pricingDetailsSpan.innerText = "None";
           } else {
@@ -94,6 +102,7 @@ function renderTechDetail(tool) {
           el("details").appendChild(pricingDetailsSpan);
 
           let attachmentsA = document.createElement("a");
+          attachmentsA.setAttribute("class", "notbold");
           if (attachments === undefined) {
             attachmentsA.innerText = "None";
           } else {
