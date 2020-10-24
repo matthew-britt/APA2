@@ -22,9 +22,10 @@ function renderCaseStudyPage(study) {
   )
     .then((res) => res.json())
     .then((json) => {
-      console.log(json['fields'])
+      console.log(json["fields"]);
       let title = json["fields"]["Title"];
       let desc = json["fields"]["Notes (rename to Short Description?)"];
+      let org = json["fields"]["Organization"];
 
       let titleSpan = document.createElement("span");
       titleSpan.setAttribute("class", "notbold");
@@ -34,6 +35,15 @@ function renderCaseStudyPage(study) {
       let descSpan = document.createElement("span");
       descSpan.setAttribute("class", "notbold");
       descSpan.innerText = desc;
-      el('desc').appendChild(descSpan);
+      el("desc").appendChild(descSpan);
+
+      let orgSpan = document.createElement("span");
+      orgSpan.setAttribute("class", "notbold");
+      if (org === undefined) {
+        orgSpan.innerText = "None";
+      } else {
+        orgSpan.innerText = org;
+      }
+      el("organization").appendChild(orgSpan);
     });
 }
