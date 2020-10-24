@@ -26,6 +26,7 @@ function renderCaseStudyPage(study) {
       let title = json["fields"]["Title"];
       let desc = json["fields"]["Notes (rename to Short Description?)"];
       let org = json["fields"]["Organization"];
+      let orgType = json["fields"]["Organization Type"];
 
       let titleSpan = document.createElement("span");
       titleSpan.setAttribute("class", "notbold");
@@ -45,5 +46,14 @@ function renderCaseStudyPage(study) {
         orgSpan.innerText = org;
       }
       el("organization").appendChild(orgSpan);
+
+      let orgTypeSpan = document.createElement("span");
+      orgTypeSpan.setAttribute("class", "notbold");
+      if (orgType === undefined) {
+        orgTypeSpan.innerText = "None";
+      } else {
+        orgTypeSpan.innerText = orgType;
+      }
+      el("organizationType").appendChild(orgTypeSpan);
     });
 }
