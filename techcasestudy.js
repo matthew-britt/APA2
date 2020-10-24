@@ -22,19 +22,18 @@ function renderCaseStudyPage(study) {
   )
     .then((res) => res.json())
     .then((json) => {
-      // console.log(json['fields']['Title'])
+      console.log(json['fields'])
       let title = json["fields"]["Title"];
+      let desc = json["fields"]["Notes (rename to Short Description?)"];
 
       let titleSpan = document.createElement("span");
       titleSpan.setAttribute("class", "notbold");
       titleSpan.innerText = title;
       el("title").appendChild(titleSpan);
 
-      let caseStudiesA = document.createElement("a");
-      caseStudiesA.innerText = studyTitle;
-      caseStudiesA.title = "Click here";
-      caseStudiesA.href = `./techcasestudy.html?${study}`;
-      caseStudiesA.target = "_blank";
-      //el(studyTitle).appendChild(caseStudiesA);
+      let descSpan = document.createElement("span");
+      descSpan.setAttribute("class", "notbold");
+      descSpan.innerText = desc;
+      el('desc').appendChild(descSpan);
     });
 }
