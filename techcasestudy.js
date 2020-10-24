@@ -22,11 +22,13 @@ function renderCaseStudyPage(study) {
   )
     .then((res) => res.json())
     .then((json) => {
-      console.log(json['fields'])
-      let studyTitle = json["fields"]["Title"];
-      let caseStudiesLi = document.createElement("li");
-      caseStudiesLi.setAttribute("id", studyTitle);
-      //el("caseStudies").appendChild(caseStudiesLi);
+      // console.log(json['fields']['Title'])
+      let title = json["fields"]["Title"];
+
+      let titleSpan = document.createElement("span");
+      titleSpan.setAttribute("class", "notbold");
+      titleSpan.innerText = title;
+      el("title").appendChild(titleSpan);
 
       let caseStudiesA = document.createElement("a");
       caseStudiesA.innerText = studyTitle;
