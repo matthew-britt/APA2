@@ -11,6 +11,25 @@ function el(id) {
   return document.getElementById(id);
 }
 
+function renderTechnology(tech) {
+  fetch(`https://api.airtable.com/v0/appT5nNiLF8Dr1wwj/Technology%20List/${tech}`, {
+    headers: {
+      Authorization: "Bearer keyemv7utChwq4g5e",
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      let caseStudyTech = json['fields']['Name']
+      let technologyA = document.createElement("a");
+      technologyA.setAttribute("class", "notbold");
+      technologyA.innerText = caseStudyTech;
+      technologyA.title = "Click here";
+      technologyA.href = `./techdetail.html?${caseStudyTech}`;
+      technologyA.target = "_blank";
+      el('technology').appendChild(technologyA);
+    });
+}
+
 function renderCaseStudyPage(study) {
   fetch(
     `https://api.airtable.com/v0/appT5nNiLF8Dr1wwj/Case%20Studies/${study}`,
@@ -29,7 +48,9 @@ function renderCaseStudyPage(study) {
       let orgType = json["fields"]["Organization Type"];
       let contactName = json["fields"]["Contact Name"];
       let contactEmail = json["fields"]["Contact Email"];
-      let date = json["fields"]["Case Study Date"]
+      let date = json["fields"]["Case Study Date"];
+      let technology = json["fields"]["Technology"];
+      //console.log(renderTechnology(technology));
 
       let titleSpan = document.createElement("span");
       titleSpan.setAttribute("class", "notbold");
@@ -89,5 +110,17 @@ function renderCaseStudyPage(study) {
         dateSpan.innerText = date;
       }
       el("date").appendChild(dateSpan);
+
+
+      let technologyA = document.createElement("a");
+      technologyA.setAttribute("class", "notbold");
+      if (technology === undefined) {
+        technologyA.innerText = "None";
+        el("technology").appendChild(technologyA);
+      } else {
+        //for (let i of technology) {
+          renderTechnology(technology);
+        //}
+      }
     });
 }
