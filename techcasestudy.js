@@ -12,22 +12,37 @@ function el(id) {
 }
 
 function renderTechnology(tech) {
-  fetch(`https://api.airtable.com/v0/appT5nNiLF8Dr1wwj/Technology%20List/${tech}`, {
-    headers: {
-      Authorization: "Bearer keyemv7utChwq4g5e",
-    },
-  })
+  fetch(
+    `https://api.airtable.com/v0/appT5nNiLF8Dr1wwj/Technology%20List/${tech}`,
+    {
+      headers: {
+        Authorization: "Bearer keyemv7utChwq4g5e",
+      },
+    }
+  )
     .then((res) => res.json())
     .then((json) => {
-      let caseStudyTech = json['fields']['Name']
+      let caseStudyTech = json["fields"]["Name"];
       let technologyA = document.createElement("a");
       technologyA.setAttribute("class", "notbold");
       technologyA.innerText = caseStudyTech;
       technologyA.title = "Click here";
       technologyA.href = `./techdetail.html?${caseStudyTech}`;
       technologyA.target = "_blank";
-      el('technology').appendChild(technologyA);
+      el("technology").appendChild(technologyA);
     });
+}
+
+function renderTags(taglist) {
+  for (let i of taglist) {
+    let tagsA = document.createElement("a");
+    tagsA.setAttribute("class", "notbold");
+    tagsA.innerText = `${i}\u00A0\u00A0\u00A0`;
+    tagsA.title = "Click here";
+    tagsA.href = `./techlist.html`;
+    tagsA.target = "_blank";
+    el("tags").appendChild(tagsA);
+  }
 }
 
 function renderCaseStudyPage(study) {
@@ -50,7 +65,8 @@ function renderCaseStudyPage(study) {
       let contactEmail = json["fields"]["Contact Email"];
       let date = json["fields"]["Case Study Date"];
       let technology = json["fields"]["Technology"];
-      //console.log(renderTechnology(technology));
+      let tags = json["fields"]["Tags (from Technology List)"];
+      //console.log(tags);
 
       let titleSpan = document.createElement("span");
       titleSpan.setAttribute("class", "notbold");
@@ -111,7 +127,6 @@ function renderCaseStudyPage(study) {
       }
       el("date").appendChild(dateSpan);
 
-
       let technologyA = document.createElement("a");
       technologyA.setAttribute("class", "notbold");
       if (technology === undefined) {
@@ -119,8 +134,17 @@ function renderCaseStudyPage(study) {
         el("technology").appendChild(technologyA);
       } else {
         //for (let i of technology) {
-          renderTechnology(technology);
+        renderTechnology(technology);
         //}
+      }
+
+      let tagsA = document.createElement("a");
+      tagsA.setAttribute("class", "notbold");
+      if (tags === undefined) {
+        tagsA.innerText = "None";
+        el("tags").appendChild(tagsA);
+      } else {
+        renderTags(tags);
       }
     });
 }
