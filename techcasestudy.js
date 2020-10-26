@@ -28,9 +28,7 @@ function renderCaseStudyPage(study) {
       let org = json["fields"]["Organization"];
       let orgType = json["fields"]["Organization Type"];
       let contactName = json["fields"]["Contact Name"];
-      let contactEmail = json["fields"]["Contact Email"]
-       
-        .split(" ");
+      let contactEmail = json["fields"]["Contact Email"];
 
       let titleSpan = document.createElement("span");
       titleSpan.setAttribute("class", "notbold");
@@ -74,13 +72,11 @@ function renderCaseStudyPage(study) {
       if (contactEmail === undefined) {
         contactEmailA.innerText = "None";
       } else {
-        contactEmail.forEach((ce) => {
-          console.log(ce);
-          contactEmailA.innerText = ce;
-          contactEmailA.href = `mailto:${ce}`;
-          contactEmailA.title = "Click Here";
-          contactEmailA.target = "_blank";
-        });
+        console.log();
+        contactEmailA.innerText = contactEmail;
+        contactEmailA.href = `mailto:${contactEmail}`;
+        contactEmailA.title = "Click Here";
+        contactEmailA.target = "_blank";
       }
       el("contactEmail").appendChild(contactEmailA);
     });
