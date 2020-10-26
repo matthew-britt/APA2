@@ -29,6 +29,7 @@ function renderCaseStudyPage(study) {
       let orgType = json["fields"]["Organization Type"];
       let contactName = json["fields"]["Contact Name"];
       let contactEmail = json["fields"]["Contact Email"];
+      let date = json["fields"]["Case Study Date"]
 
       let titleSpan = document.createElement("span");
       titleSpan.setAttribute("class", "notbold");
@@ -79,5 +80,14 @@ function renderCaseStudyPage(study) {
         contactEmailA.target = "_blank";
       }
       el("contactEmail").appendChild(contactEmailA);
+
+      let dateSpan = document.createElement("span");
+      dateSpan.setAttribute("class", "notbold");
+      if (date === undefined) {
+        dateSpan.innerText = "None";
+      } else {
+        dateSpan.innerText = date;
+      }
+      el("date").appendChild(dateSpan);
     });
 }
