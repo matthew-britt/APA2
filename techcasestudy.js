@@ -71,7 +71,8 @@ function renderCaseStudyPage(study) {
       let discount = json["fields"]["Discount for Nonprofits?"];
       let usage = json["fields"]["Step by Step Journey (Usage)"];
       let implementation = json["fields"]["Step by Step Journey (Implementation)"];
-      console.log(implementation);
+      let quickStartGuide = json["fields"]["Quick Start Guide"];
+      console.log(quickStartGuide);
 
       let titleSpan = document.createElement("span");
       titleSpan.setAttribute("class", "notbold");
@@ -196,6 +197,20 @@ function renderCaseStudyPage(study) {
         implementationSpan.innerText = implementation;
       }
       el("implementation").appendChild(implementationSpan);
+
+      let quickStartGuideA = document.createElement("a");
+      quickStartGuideA.setAttribute("class", "notbold");
+      if (quickStartGuide === undefined) {
+        quickStartGuideA.innerText = "None";
+      } else {
+        console.log();
+        quickStartGuideA.innerText = quickStartGuide;
+        quickStartGuideA.href = quickStartGuide;
+        quickStartGuideA.title = "Click Here";
+        quickStartGuideA.target = "_blank";
+      }
+      el("quickStartGuide").appendChild(quickStartGuideA);
+
 
     });
 }
