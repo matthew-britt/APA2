@@ -221,5 +221,14 @@ function renderCaseStudyPage(study) {
         ratingOverallSpan.innerText = ratingOverall;
       }
       el("ratingOverall").appendChild(ratingOverallSpan);
+
+      let ratingEaseOfUseSpan = document.createElement("span");
+      ratingEaseOfUseSpan.setAttribute("class", "notbold");
+      if (ratingEaseOfUse === undefined) {
+        ratingEaseOfUseSpan.innerText = "None";
+      } else {
+        ratingEaseOfUseSpan.innerText = ratingEaseOfUse;
+      }
+      el("ratingEaseOfUse").appendChild(ratingEaseOfUseSpan);
     });
 }
