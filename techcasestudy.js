@@ -69,7 +69,8 @@ function renderCaseStudyPage(study) {
       let dependencies = json["fields"]["Supporting Tech (duplicate of Technology Dependencies?)"];
       let cost = json["fields"]["Cost"];
       let discount = json["fields"]["Discount for Nonprofits?"];
-      console.log(discount);
+      let usage = json["fields"]["Step by Step Journey (Usage)"];
+      console.log(usage);
 
       let titleSpan = document.createElement("span");
       titleSpan.setAttribute("class", "notbold");
@@ -176,5 +177,15 @@ function renderCaseStudyPage(study) {
         discountSpan.innerText = discount;
       }
       el("discount").appendChild(discountSpan);
+
+      let usageSpan = document.createElement("p");
+      usageSpan.setAttribute("class", "notbold");
+      if (usage === undefined) {
+        usageSpan.innerText = "None";
+      } else {
+        usageSpan.innerText = usage;
+      }
+      el("usage").appendChild(usageSpan);
+
     });
 }
