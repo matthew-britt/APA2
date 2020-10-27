@@ -66,7 +66,8 @@ function renderCaseStudyPage(study) {
       let date = json["fields"]["Case Study Date"];
       let technology = json["fields"]["Technology"];
       let tags = json["fields"]["Tags (from Technology List)"];
-      //console.log(tags);
+      let dependencies = json["fields"]["Supporting Tech (duplicate of Technology Dependencies?)"];
+      console.log(dependencies);
 
       let titleSpan = document.createElement("span");
       titleSpan.setAttribute("class", "notbold");
@@ -146,5 +147,14 @@ function renderCaseStudyPage(study) {
       } else {
         renderTags(tags);
       }
+
+      let dependenciesSpan = document.createElement("span");
+      dependenciesSpan.setAttribute("class", "notbold");
+      if (dependencies === undefined) {
+        dependenciesSpan.innerText = "None";
+      } else {
+        dependenciesSpan.innerText = dependencies;
+      }
+      el("dependencies").appendChild(dependenciesSpan);
     });
 }
