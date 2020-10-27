@@ -56,7 +56,7 @@ function renderCaseStudyPage(study) {
   )
     .then((res) => res.json())
     .then((json) => {
-      //console.log(json["fields"]);
+    
       let title = json["fields"]["Title"];
       let desc = json["fields"]["Notes (rename to Short Description?)"];
       let org = json["fields"]["Organization"];
@@ -75,7 +75,7 @@ function renderCaseStudyPage(study) {
       let ratingOverall = json["fields"]["Rating (1-5) - Overall Satisfaction"];
       let ratingEaseOfUse = json["fields"]["Rating (1-5) - Ease of Use"];
       let ratingEaseOfDeployment = json["fields"]["Rating (1-5) - Ease of Deployment"];
-      console.log(ratingEaseOfDeployment);
+      let ratingCostValue = json["fields"]["Rating (1-5) - Cost / Value"];
 
       let titleSpan = document.createElement("span");
       titleSpan.setAttribute("class", "notbold");
@@ -232,7 +232,6 @@ function renderCaseStudyPage(study) {
       }
       el("ratingEaseOfUse").appendChild(ratingEaseOfUseSpan);
 
-
       let ratingEaseOfDeploymentSpan = document.createElement("span");
       ratingEaseOfDeploymentSpan.setAttribute("class", "notbold");
       if (ratingEaseOfDeployment === undefined) {
@@ -241,5 +240,14 @@ function renderCaseStudyPage(study) {
         ratingEaseOfDeploymentSpan.innerText = ratingEaseOfDeployment;
       }
       el("ratingEaseOfDeployment").appendChild(ratingEaseOfDeploymentSpan);
+
+      let ratingCostValueSpan = document.createElement("span");
+      ratingCostValueSpan.setAttribute("class", "notbold");
+      if (ratingCostValue === undefined) {
+        ratingCostValueSpan.innerText = "None";
+      } else {
+        ratingCostValueSpan.innerText = ratingCostValue;
+      }
+      el("ratingCostValue").appendChild(ratingCostValueSpan);
     });
 }
