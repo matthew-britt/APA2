@@ -74,7 +74,8 @@ function renderCaseStudyPage(study) {
       let quickStartGuide = json["fields"]["Quick Start Guide"];
       let ratingOverall = json["fields"]["Rating (1-5) - Overall Satisfaction"];
       let ratingEaseOfUse = json["fields"]["Rating (1-5) - Ease of Use"];
-      console.log(ratingEaseOfUse);
+      let ratingEaseOfDeployment = json["fields"]["Rating (1-5) - Ease of Deployment"];
+      console.log(ratingEaseOfDeployment);
 
       let titleSpan = document.createElement("span");
       titleSpan.setAttribute("class", "notbold");
@@ -230,5 +231,15 @@ function renderCaseStudyPage(study) {
         ratingEaseOfUseSpan.innerText = ratingEaseOfUse;
       }
       el("ratingEaseOfUse").appendChild(ratingEaseOfUseSpan);
+
+
+      let ratingEaseOfDeploymentSpan = document.createElement("span");
+      ratingEaseOfDeploymentSpan.setAttribute("class", "notbold");
+      if (ratingEaseOfDeployment === undefined) {
+        ratingEaseOfDeploymentSpan.innerText = "None";
+      } else {
+        ratingEaseOfDeploymentSpan.innerText = ratingEaseOfDeployment;
+      }
+      el("ratingEaseOfDeployment").appendChild(ratingEaseOfDeploymentSpan);
     });
 }
