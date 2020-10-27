@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   let params = location.search;
-  let newParams = params.toString().replace("?", "").replace(/\%20/g, " ");
+  let newParams = params.toString().replace("?", "").replace(/\%20/g, " ").replace(/\%27/g, `'`);
   renderTechDetail(newParams);
+  console.log(newParams)
   console.log("Suck it, Trebek");
 });
 
