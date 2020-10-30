@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let params = location.search.replace("?", "");
   renderCaseStudyPage(params);
 
-  console.log("Suck it again, Trebek");
+  console.log("Hi everybody!");
 });
 
 function el(id) {

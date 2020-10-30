@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   let params = location.search;
-  let newParams = params.toString().replace("?", "").replace(/\%20/g, " ").replace(/\%27/g, `'`);
-  renderTechDetail(newParams);
+  //console.log(decodeURI(params).replace("?", ""))
+  //let newParams = decodeURI(params).replace("?", "")
+  let newParams = params.toString().replace("?", "").replace("%27", "'").replace(/\%20/g, " ");
   console.log(newParams)
-  console.log("Suck it, Trebek");
+  renderTechDetail(newParams);
+  console.log("Hi everybody!");
 });
 
 function el(id) {
@@ -19,6 +21,8 @@ function renderTechDetail(tool) {
     .then((res) => res.json())
     .then((json) => {
       for (let i in json.records) {
+        console.log(json.records[i]["fields"]["Name"]);
+        //console.log(tool)
         if (json.records[i]["fields"]["Name"] === tool) {
           let website = json.records[i]["fields"]["Website"];
           let tags = json.records[i]["fields"]["Tags"];
@@ -30,7 +34,6 @@ function renderTechDetail(tool) {
           let pricingDetails = json.records[i]["fields"]["Pricing Details"];
           let attachments = json.records[i]["fields"]["Attachments"];
           let caseStudies = json.records[i]["fields"]["Case Studies"];
-          //console.log(caseStudies);
 
           let toolLi = document.createElement("li");
           toolLi.innerText = tool;
